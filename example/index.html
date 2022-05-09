@@ -28,7 +28,7 @@
         <input
           type="text"
           id="iUrl"
-          value="http://localhost/sample.flv"
+          value="http://1011.hlsplay.aodianyun.com/demo/game.flv"
           style="width:786px;height:10px;margin:0;padding:5px;margin-bottom:5px;display:block"
         />
         <input type="number" id="iChunkSize" value="128" />
@@ -80,7 +80,7 @@
       />
       <span>音量设置</span>
     </div>
-    <script src="./index.js"></script>
+    <script src="../dist/index.js"></script>
     <script>
       const $status = document.getElementById('status');
       const $time = document.getElementById('time');
@@ -103,7 +103,7 @@
         document.getElementById('playBtn').addEventListener('click', () => {
           var isH265 = document.getElementById('iH265').checked;
           WXInlinePlayer.init({
-            asmUrl: './prod.' + (isH265 ? 'h265' : 'all') + '.asm.combine.js',
+            // asmUrl: './prod.' + (isH265 ? 'h265' : 'all') + '.asm.combine.js',
             wasmUrl: './prod.' + (isH265 ? 'h265' : 'all') + '.wasm.combine.js'
           });
 
@@ -141,6 +141,7 @@
 
               player.on('mediaInfo', mediaInfo => {
                 const { onMetaData } = mediaInfo;
+                console.log("mediaInfo>>>>>> ", onMetaData)
                 $canvas.height = onMetaData.height || 720;
                 $canvas.width = onMetaData.width || 1080;
                 for (let i = 0; i < onMetaData.length; i++) {
@@ -150,6 +151,7 @@
                     $canvas.width = onMetaData[i].width;
                   }
                 }
+               
                 $canvas.style.marginLeft = (800 - $canvas.width) / 2 + 'px';
               });
 

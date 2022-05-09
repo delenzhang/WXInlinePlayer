@@ -329,6 +329,7 @@ class Processor extends EventEmitter {
     }
 
     const { type } = msg;
+    // console.log('_onCodecMsgHandler>>>>', msg)
     switch (type) {
       case 'ready': {
         this.emit('buffering');

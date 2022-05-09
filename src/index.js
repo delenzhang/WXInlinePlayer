@@ -292,6 +292,7 @@ class WXInlinePlayer extends EventEmitter {
   }
 
   _onMediaInfoHandler(mediaInfo) {
+    console.log('>>> _onMediaInfoHandler', mediaInfo)
     const { onMetaData = [] } = mediaInfo;
     for (let i = 0; i < onMetaData.length; i++) {
       if ('duration' in onMetaData[i]) {
